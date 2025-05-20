@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ build.champion }} Build</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .build-section { margin-bottom: 30px; }
+        .item { display: inline-block; margin: 5px; padding: 8px; background: #f0f0f0; border-radius: 4px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    {% if build.error %}
+        <p class="error">{{ build.error }}</p>
+    {% else %}
+        <h1>{{ build.champion }} Build</h1>
+        
+        <div class="build-section">
+            <h2>Items</h2>
+            {% for item in build['items'] %}
+                <div class="item">{{ item }}</div>
+            {% endfor %}
+        </div>
+        
+        <div class="build-section">
+            <h2>Runes</h2>
+            {% for rune in build['runes'] %}
+                <div class="item">{{ rune }}</div>
+            {% endfor %}
+        </div>
+        
+        <div class="build-section">
+            <h2>Summoner Spells</h2>
+            {% for spell in build['sums'] %}
+                <div class="item">{{ spell }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <a href="/" style="display: inline-block; margin-top: 20px; padding: 10px; background: #4CAF50; color: white; text-decoration: none;">Try Another Champion</a>
+</body>
+</html>
